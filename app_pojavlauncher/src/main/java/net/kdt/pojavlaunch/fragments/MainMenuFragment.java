@@ -12,6 +12,7 @@ import net.kdt.pojavlaunch.extra.ExtraConstants;
 import net.kdt.pojavlaunch.extra.ExtraCore;
 
 public class MainMenuFragment extends Fragment {
+    public static final String TAG = "MainMenuFragment";
     public MainMenuFragment() { super(R.layout.fragment_launcher); }
 
     @Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
