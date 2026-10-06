@@ -158,7 +158,7 @@ public class LauncherActivity extends BaseActivity {
 
     @Override
     public boolean setFullscreen() {
-        return false;
+        return true;
     }
 
     @Override
