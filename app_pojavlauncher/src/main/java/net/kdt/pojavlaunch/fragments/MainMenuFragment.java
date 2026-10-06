@@ -64,18 +64,35 @@ public class MainMenuFragment extends Fragment {
         mCustomControlButton.setOnClickListener(v -> startActivity(new Intent(requireContext(), CustomControlsActivity.class)));
         mInstallJarButton.setOnClickListener(v -> runInstallerWithConfirmation());
         mEditProfileButton.setOnClickListener(v -> mVersionSpinner.openProfileEditor(requireActivity()));
+        mPlayButton.setOnClickListener(v -> launchSelectedInstance());
+        mShareLogsButton.setOnClickListener(v -> shareLog(requireContext()));
+        mOpenDirectoryButton.setOnClickListener(v -> openGameDirectory(v.getContext()));
 
-        mPlayButton.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true));
+        Button addAccount = view.findViewById(R.id.target_add_account);
+        Button instance2 = view.findViewById(R.id.target_instance_2);
+        Button instance3 = view.findViewById(R.id.target_instance_3);
+        Button settings = view.findViewById(R.id.target_settings);
+        Button menu = view.findViewById(R.id.target_menu_button);
 
-        mShareLogsButton.setOnClickListener((v) -> shareLog(requireContext()));
+        addAccount.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true));
+        instance2.setOnClickListener(v -> launchSelectedInstance());
+        instance3.setOnClickListener(v -> launchSelectedInstance());
 
-        mOpenDirectoryButton.setOnClickListener((v)-> openGameDirectory(v.getContext()));
+        View.OnClickListener openSettings = v -> {
+            View settingButton = requireActivity().findViewById(R.id.setting_button);
+            if (settingButton != null) settingButton.performClick();
+        };
+        settings.setOnClickListener(openSettings);
+        menu.setOnClickListener(openSettings);
 
-
-        mNewsButton.setOnLongClickListener((v)->{
+        mNewsButton.setOnLongClickListener(v -> {
             Tools.swapFragment(requireActivity(), GamepadMapperFragment.class, GamepadMapperFragment.TAG, null);
             return true;
         });
+    }
+
+    private void launchSelectedInstance() {
+        ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true);
     }
 
     private void openGameDirectory(Context context) {
