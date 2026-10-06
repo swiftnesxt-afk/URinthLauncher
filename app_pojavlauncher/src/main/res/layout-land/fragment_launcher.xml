@@ -1,66 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_menu_main" android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="horizontal" android:background="#07131D">
+    android:orientation="vertical" android:background="#020D18">
 
-    <LinearLayout android:id="@+id/modrinth_sidebar" android:layout_width="0dp" android:layout_height="match_parent"
-        android:layout_weight="0.18" android:orientation="vertical" android:padding="16dp" android:background="#0B1722">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:gravity="center_vertical">
-            <ImageView android:layout_width="38dp" android:layout_height="38dp" android:src="@drawable/ic_modrinth" android:contentDescription="@null"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="10dp"
-                android:text="ModrinthLauncher" android:textColor="#F4F8FB" android:textSize="16sp" android:textStyle="bold"/>
-        </LinearLayout>
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp"
-            android:text="Made By: Macase, Nile" android:textColor="#7C93A5" android:textSize="10sp"/>
-        <TextView android:id="@+id/modrinth_home" style="@style/ModrinthNav" android:text="Home"/>
-        <TextView android:id="@+id/modrinth_instances" style="@style/ModrinthNav" android:text="Instances"/>
-        <TextView android:id="@+id/modrinth_modpacks" style="@style/ModrinthNav" android:text="Modpacks"/>
-        <TextView android:id="@+id/modrinth_mods" style="@style/ModrinthNav" android:text="Mods"/>
-        <TextView android:id="@+id/modrinth_shaders" style="@style/ModrinthNav" android:text="Shaders"/>
-        <TextView android:id="@+id/modrinth_worlds" style="@style/ModrinthNav" android:text="Worlds"/>
-        <TextView android:id="@+id/modrinth_resourcepacks" style="@style/ModrinthNav" android:text="Resource Packs"/>
-        <TextView android:id="@+id/modrinth_servers" style="@style/ModrinthNav" android:text="Servers"/>
-        <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
-        <TextView android:id="@+id/modrinth_settings" style="@style/ModrinthNav" android:text="Settings"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="62dp" android:gravity="center_vertical"
+        android:paddingStart="12dp" android:paddingEnd="14dp" android:background="#03101B">
+        <TextView android:layout_width="38dp" android:layout_height="match_parent" android:gravity="center" android:text="☰"
+            android:textColor="#E8F5FF" android:textSize="28sp"/>
+        <ImageView android:layout_width="44dp" android:layout_height="44dp" android:src="@drawable/ic_modrinth" android:contentDescription="@null"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="9dp"
+            android:text="Modrinth" android:textColor="#F4F7FB" android:textSize="20sp" android:textStyle="bold"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Launcher"
+            android:textColor="#18F0C4" android:textSize="20sp" android:textStyle="bold"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="18dp"
+            android:text="|" android:textColor="#16EAC1" android:textSize="18sp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="16dp"
+            android:text="Made By: Macase, Nile" android:textColor="#18E8C3" android:textSize="11sp" android:textStyle="bold"/>
     </LinearLayout>
 
-    <ScrollView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.82" android:fillViewport="true" android:background="#0F1B25">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="150dp" android:orientation="vertical" android:padding="22dp" android:background="#123C46">
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Play, Explore, Create, Together."
-                    android:textColor="#FFFFFF" android:textSize="26sp" android:textStyle="bold"/>
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp"
-                    android:text="The best Minecraft experience, now on your Android device." android:textColor="#B9D8DE" android:textSize="13sp"/>
-                <TextView android:id="@+id/hero_play" style="@style/ModrinthPlay" android:layout_width="110dp" android:layout_height="34dp"
-                    android:layout_marginTop="12dp" android:text="PLAY"/>
-            </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp"
-                android:text="Instances" android:textColor="#FFFFFF" android:textSize="20sp" android:textStyle="bold"/>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="145dp" android:layout_marginTop="10dp" android:orientation="horizontal">
-                <LinearLayout style="@style/ModrinthCard" android:layout_weight="1"><TextView style="@style/ModrinthCardTitle" android:text="URinthH"/>
-                    <TextView style="@style/ModrinthCardMeta" android:text="Vanilla 26.3"/><TextView android:id="@+id/instance_play_1" style="@style/ModrinthPlay" android:text="PLAY"/></LinearLayout>
-                <LinearLayout style="@style/ModrinthCard" android:layout_weight="1"><TextView style="@style/ModrinthCardTitle" android:text="URinthH"/>
-                    <TextView style="@style/ModrinthCardMeta" android:text="Vanilla 26.3"/><TextView android:id="@+id/instance_play_2" style="@style/ModrinthPlay" android:text="PLAY"/></LinearLayout>
-                <LinearLayout style="@style/ModrinthCard" android:layout_weight="1"><TextView style="@style/ModrinthCardTitle" android:text="URinthH"/>
-                    <TextView style="@style/ModrinthCardMeta" android:text="Vanilla 26.3"/><TextView android:id="@+id/instance_play_3" style="@style/ModrinthPlay" android:text="PLAY"/></LinearLayout>
-            </LinearLayout>
+        <LinearLayout android:layout_width="216dp" android:layout_height="match_parent" android:orientation="vertical"
+            android:paddingStart="10dp" android:paddingEnd="10dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:background="#04111D">
 
-            <LinearLayout android:layout_width="match_parent" android:layout_height="82dp" android:layout_marginTop="12dp" android:orientation="horizontal">
-                <TextView android:id="@+id/add_account_card" style="@style/ModrinthAction" android:text="ADD ACCOUNT"/>
-                <TextView android:id="@+id/check_updates_card" style="@style/ModrinthAction" android:text="CHECK UPDATES"/>
-                <TextView android:id="@+id/ultra_card" style="@style/ModrinthAction" android:text="UrInthUltra Mode&#10;OFF"/>
-                <TextView android:id="@+id/discord_card" style="@style/ModrinthAction" android:text="DISCORD"/>
-            </LinearLayout>
+            <LinearLayout android:id="@+id/modrinth_home" style="@style/ModrinthSideRow"><ImageView style="@style/ModrinthSideIcon" android:src="@drawable/ic_px_home"/><TextView style="@style/ModrinthSideText" android:text="Home"/></LinearLayout>
+            <LinearLayout android:id="@+id/modrinth_instances" style="@style/ModrinthSideRow"><ImageView style="@style/ModrinthSideIcon" android:src="@drawable/ic_px_image"/><TextView style="@style/ModrinthSideText" android:text="Instances"/></LinearLayout>
+            <LinearLayout android:id="@+id/modrinth_modpacks" style="@style/ModrinthSideRow"><ImageView style="@style/ModrinthSideIcon" android:src="@drawable/ic_px_experiment"/><TextView style="@style/ModrinthSideText" android:text="Modpacks"/></LinearLayout>
+            <LinearLayout android:id="@+id/modrinth_mods" style="@style/ModrinthSideRow"><ImageView style="@style/ModrinthSideIcon" android:src="@drawable/ic_px_zap"/><TextView style="@style/ModrinthSideText" android:text="Mods"/></LinearLayout>
+            <LinearLayout android:id="@+id/modrinth_shaders" style="@style/ModrinthSideRow"><ImageView style="@style/ModrinthSideIcon" android:src="@drawable/ic_px_image_renderer"/><TextView style="@style/ModrinthSideText" android:text="Shaders"/></LinearLayout>
+            <LinearLayout android:id="@+id/modrinth_worlds" style="@style/ModrinthSideRow"><ImageView style="@style/ModrinthSideIcon" android:src="@drawable/ic_px_dynamic"/><TextView style="@style/ModrinthSideText" android:text="Worlds"/></LinearLayout>
+            <LinearLayout android:id="@+id/modrinth_resourcepacks" style="@style/ModrinthSideRow"><ImageView style="@style/ModrinthSideIcon" android:src="@drawable/ic_px_folder"/><TextView style="@style/ModrinthSideText" android:text="Resource Packs"/></LinearLayout>
+            <LinearLayout android:id="@+id/modrinth_servers" style="@style/ModrinthSideRow"><ImageView style="@style/ModrinthSideIcon" android:src="@drawable/ic_px_console"/><TextView style="@style/ModrinthSideText" android:text="Servers"/></LinearLayout>
+            <LinearLayout android:id="@+id/modrinth_settings" style="@style/ModrinthSideRow"><ImageView style="@style/ModrinthSideIcon" android:src="@drawable/ic_px_sliders"/><TextView style="@style/ModrinthSideText" android:text="Settings"/></LinearLayout>
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp"
-                android:text="Latest Mods" android:textColor="#FFFFFF" android:textSize="20sp" android:textStyle="bold"/>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="105dp" android:layout_marginTop="10dp" android:orientation="horizontal">
-                <TextView style="@style/ModrinthLatest" android:text="Modrinth&#10;Minecraft"/>
-                <TextView style="@style/ModrinthLatest" android:text="Latest Mod"/>
-                <TextView style="@style/ModrinthLatest" android:text="Latest Mod"/>
+            <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="72dp" android:orientation="horizontal" android:gravity="center_vertical"
+                android:padding="8dp" android:background="#071D2A">
+                <ImageView android:layout_width="42dp" android:layout_height="42dp" android:src="@drawable/ic_modrinth" android:contentDescription="@null"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="8dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Modrinth" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Better Minecraft" android:textColor="#B9C8D2" android:textSize="10sp"/>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Together" android:textColor="#B9C8D2" android:textSize="10sp"/>
+                </LinearLayout>
+                <TextView android:layout_width="18dp" android:layout_height="wrap_content" android:text="›" android:textColor="#16EAC1" android:textSize="25sp"/>
             </LinearLayout>
-            <com.kdt.mcgui.mcVersionSpinner android:id="@+id/mc_version_spinner" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone"/>
         </LinearLayout>
-    </ScrollView>
+
+        <ScrollView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:fillViewport="true" android:background="#020D18">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="10dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="188dp" android:orientation="vertical"
+                    android:padding="20dp" android:background="#10404A">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="“Play, Explore,"
+                        android:textColor="#FFFFFF" android:textSize="24sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Create, Together.”"
+                        android:textColor="#FFFFFF" android:textSize="24sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp"
+                        android:text="The best Minecraft experience,&#10;now on your Android device." android:textColor="#D3E6EB" android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="180dp" android:layout_marginTop="10dp" android:orientation="horizontal">
+                    <LinearLayout style="@style/ModrinthCard" android:layout_weight="1"><View android:layout_width="match_parent" android:layout_height="65dp" android:background="#5A3758"/><TextView style="@style/ModrinthCardTitle" android:text="URinthH"/><TextView style="@style/ModrinthCardMeta" android:text="Vanilla 26.3"/><TextView android:id="@+id/instance_play_1" style="@style/ModrinthPlay" android:text="▷ Play"/></LinearLayout>
+                    <LinearLayout style="@style/ModrinthCard" android:layout_weight="1"><View android:layout_width="match_parent" android:layout_height="65dp" android:background="#335F72"/><TextView style="@style/ModrinthCardTitle" android:text="URinthH"/><TextView style="@style/ModrinthCardMeta" android:text="Vanilla 26.3"/><TextView android:id="@+id/instance_play_2" style="@style/ModrinthPlay" android:text="▷ Play"/></LinearLayout>
+                    <LinearLayout style="@style/ModrinthCard" android:layout_weight="1"><View android:layout_width="match_parent" android:layout_height="65dp" android:background="#8B4A2D"/><TextView style="@style/ModrinthCardTitle" android:text="URinthH"/><TextView style="@style/ModrinthCardMeta" android:text="Vanilla 26.3"/><TextView android:id="@+id/instance_play_3" style="@style/ModrinthPlay" android:text="▷ Play"/></LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="120dp" android:layout_marginTop="10dp" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="34dp" android:text="★  Latest Mods" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="86dp" android:orientation="horizontal">
+                        <TextView style="@style/ModrinthLatest" android:text="🔥  Sodium&#10;NeoForge 1.21.1&#10;&#10;Add"/>
+                        <TextView style="@style/ModrinthLatest" android:text="⚡  Lithium&#10;Fabric 1.21.1&#10;&#10;Add"/>
+                        <TextView style="@style/ModrinthLatest" android:text="🌸  Iris&#10;Fabric 1.21.1&#10;&#10;Add"/>
+                        <TextView style="@style/ModrinthLatest" android:text="◉  Distant Horizons&#10;Forge 1.21.1&#10;&#10;Add"/>
+                        <TextView style="@style/ModrinthLatest" android:text="◈  Xaero's Minimap&#10;Forge 1.21.1&#10;&#10;Add"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout android:layout_width="315dp" android:layout_height="match_parent" android:orientation="vertical" android:padding="8dp" android:background="#020D18">
+            <TextView android:id="@+id/add_account_card" style="@style/ModrinthActionTall" android:text="🟩  Add Account&#10;       Sign in to your Minecraft account&#10;&#10;       ＋  Add Account"/>
+            <TextView android:id="@+id/check_updates_card" style="@style/ModrinthActionTall" android:text="◉  Check Updates&#10;       Check for new versions and fixes&#10;                                           ›"/>
+            <TextView android:id="@+id/ultra_card" style="@style/ModrinthActionTall" android:text="🚀  UrInthUltra Mode&#10;       Enable ultra performance mode&#10;                                   OFF   ON"/>
+            <TextView android:id="@+id/discord_card" style="@style/ModrinthDiscord" android:text="◉  Discord                                      ›"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
