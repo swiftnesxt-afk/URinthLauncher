@@ -61,43 +61,37 @@ public class LauncherActivity extends BaseActivity {
     private NotificationManager mNotificationManager;
     private static ActivityResultLauncher<String> mRequestPermissionLauncher;
 
-    /* Allows to switch from one button "type" to another */
     private final FragmentManager.FragmentLifecycleCallbacks mFragmentCallbackListener = new FragmentManager.FragmentLifecycleCallbacks() {
         @Override
         public void onFragmentResumed(@NonNull FragmentManager fm, @NonNull Fragment f) {
-            mSettingsButton.setImageDrawable(ContextCompat.getDrawable(getBaseContext(), f instanceof MainMenuFragment
-                    ? R.drawable.ic_px_sliders : R.drawable.ic_px_home));
+            if (mSettingsButton != null) {
+                mSettingsButton.setImageDrawable(ContextCompat.getDrawable(getBaseContext(), f instanceof MainMenuFragment
+                        ? R.drawable.ic_px_sliders : R.drawable.ic_px_home));
+            }
         }
     };
 
-    /* Listener for the back button in settings */
     private final ExtraListener<String> mBackPreferenceListener = (key, value) -> {
         if(value.equals("true")) onBackPressed();
         return false;
     };
 
-    /* Listener for the auth method selection screen */
     private final ExtraListener<Boolean> mSelectAuthMethod = (key, value) -> {
-        // The "false" value is used to stop auth method selection
         FragmentManager manager = getSupportFragmentManager();
         if(!value || manager.isStateSaved()) return false;
         Fragment fragment = manager.findFragmentById(mFragmentView.getId());
-        // Allow starting the add account only from the main menu, should it be moved to fragment itself ?
         if(!(fragment instanceof MainMenuFragment)) return false;
-
         Tools.swapFragment(this, SelectAuthFragment.class, SelectAuthFragment.TAG, null);
         return false;
     };
 
-    /* Listener for the settings fragment */
     private final View.OnClickListener mSettingButtonListener = v -> {
         FragmentManager manager = getSupportFragmentManager();
         if(manager.isStateSaved()) return;
         Fragment fragment = manager.findFragmentById(mFragmentView.getId());
         if(fragment instanceof MainMenuFragment){
             Tools.swapFragment(this, LauncherPreferenceFragment.class, SETTING_FRAGMENT_TAG, null);
-        } else{
-            // The setting button doubles as a home button now
+        } else {
             Tools.backToMainMenu(this);
         }
     };
@@ -109,22 +103,18 @@ public class LauncherActivity extends BaseActivity {
         }
 
         Instance selectedInstance = Instances.loadSelectedInstance();
-
         if(selectedInstance == null) {
             Toast.makeText(this, R.string.no_instance, Toast.LENGTH_LONG).show();
             return false;
         }
-
         if(selectedInstance.installer != null) {
             selectedInstance.installer.start();
             return false;
         }
-
         if (!Tools.isValidString(selectedInstance.versionId)){
             Toast.makeText(this, R.string.error_no_version, Toast.LENGTH_LONG).show();
             return false;
         }
-
         if(Accounts.getCurrent() == null){
             Toast.makeText(this, R.string.no_saved_accounts, Toast.LENGTH_LONG).show();
             ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true);
@@ -142,8 +132,6 @@ public class LauncherActivity extends BaseActivity {
     };
 
     private final TaskCountListener mDoubleLaunchPreventionListener = taskCount -> {
-        // Hide the notification that starts the game if there are tasks executing.
-        // Prevents the user from trying to launch the game with tasks ongoing.
         if(taskCount > 0) {
             Tools.runOnUiThread(() ->
                     mNotificationManager.cancel(NotificationUtils.NOTIFICATION_ID_GAME_START)
@@ -151,14 +139,17 @@ public class LauncherActivity extends BaseActivity {
         }
         return false;
     };
+
     @Override
     protected boolean shouldIgnoreNotch() {
-        return getResources().getConfiguration().orientation == ORIENTATION_PORTRAIT;
+        // The launcher UI is designed edge-to-edge in fixed landscape.
+        // Do not inset it for a side display cutout, otherwise a black strip appears on the left.
+        return true;
     }
 
     @Override
     public boolean setFullscreen() {
-        return false;
+        return true;
     }
 
     @Override
@@ -196,7 +187,6 @@ public class LauncherActivity extends BaseActivity {
         ProgressKeeper.addTaskCountListener(mProgressLayout);
         ExtraCore.addExtraListener(ExtraConstants.BACK_PREFERENCE, mBackPreferenceListener);
         ExtraCore.addExtraListener(ExtraConstants.SELECT_AUTH_METHOD, mSelectAuthMethod);
-
         ExtraCore.addExtraListener(ExtraConstants.LAUNCH_GAME, mLaunchGameListener);
 
         new AsyncVersionList().getVersionList(versions -> ExtraCore.setValue(ExtraConstants.RELEASE_TABLE, versions));
@@ -238,11 +228,9 @@ public class LauncherActivity extends BaseActivity {
         ExtraCore.removeExtraListenerFromValue(ExtraConstants.BACK_PREFERENCE, mBackPreferenceListener);
         ExtraCore.removeExtraListenerFromValue(ExtraConstants.SELECT_AUTH_METHOD, mSelectAuthMethod);
         ExtraCore.removeExtraListenerFromValue(ExtraConstants.LAUNCH_GAME, mLaunchGameListener);
-
         getSupportFragmentManager().unregisterFragmentLifecycleCallbacks(mFragmentCallbackListener);
     }
 
-    /** Custom implementation to feel more natural when a backstack isn't present */
     @Override
     public void onBackPressed() {
         MicrosoftLoginFragment fragment = (MicrosoftLoginFragment) getVisibleFragment(MicrosoftLoginFragment.TAG);
@@ -252,25 +240,20 @@ public class LauncherActivity extends BaseActivity {
                 return;
             }
         }
-
         super.onBackPressed();
     }
 
     @SuppressWarnings("SameParameterValue")
     private Fragment getVisibleFragment(String tag){
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
-        if(fragment != null && fragment.isVisible()) {
-            return fragment;
-        }
+        if(fragment != null && fragment.isVisible()) return fragment;
         return null;
     }
 
     @SuppressWarnings("unused")
     private Fragment getVisibleFragment(int id){
         Fragment fragment = getSupportFragmentManager().findFragmentById(id);
-        if(fragment != null && fragment.isVisible()) {
-            return fragment;
-        }
+        if(fragment != null && fragment.isVisible()) return fragment;
         return null;
     }
 
@@ -278,23 +261,22 @@ public class LauncherActivity extends BaseActivity {
         if(Build.VERSION.SDK_INT < minApi) return;
         mRequestPermissionLauncher.launch(permission);
     }
+
     public boolean checkForPermission(int minApi, final String permission) {
         return Build.VERSION.SDK_INT < minApi ||
                 ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_DENIED;
     }
+
     public boolean checkForPermissionRationale(int minApi, final String permission) {
         return checkForPermission(minApi, permission) || ActivityCompat.shouldShowRequestPermissionRationale(this, permission);
     }
 
     private void checkNotificationPermission() {
         if(LauncherPreferences.PREF_SKIP_NOTIFICATION_PERMISSION_CHECK ||
-            this.checkForPermission(33, Manifest.permission.POST_NOTIFICATIONS)) {
-            return;
-        }
+            this.checkForPermission(33, Manifest.permission.POST_NOTIFICATIONS)) return;
         showNotificationPermissionReasoning();
     }
 
-    // Call async
     private void checkPreviousInstalls(){
         final String[] packages = {"git.artdeell.mojo", "git.artdeell.mojo.debug", "git.artdeell.mojo.pub"};
         for(String s : packages){
@@ -315,8 +297,7 @@ public class LauncherActivity extends BaseActivity {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.notification_permission_dialog_title)
                 .setMessage(R.string.notification_permission_dialog_text)
-                .setPositiveButton(android.R.string.ok, (d, w) ->
-                        askForPermission(33, Manifest.permission.POST_NOTIFICATIONS))
+                .setPositiveButton(android.R.string.ok, (d, w) -> askForPermission(33, Manifest.permission.POST_NOTIFICATIONS))
                 .setNegativeButton(android.R.string.cancel, (d, w)-> handleNoNotificationPermission())
                 .show();
     }
@@ -328,7 +309,6 @@ public class LauncherActivity extends BaseActivity {
                 .apply();
     }
 
-    /** Stuff all the view boilerplate here */
     private void bindViews(){
         mFragmentView = findViewById(R.id.container_fragment);
         mSettingsButton = findViewById(R.id.setting_button);

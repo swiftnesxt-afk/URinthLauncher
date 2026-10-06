@@ -1,94 +1,60 @@
 package net.kdt.pojavlaunch.fragments;
 
-import static net.kdt.pojavlaunch.Tools.openPath;
-import static net.kdt.pojavlaunch.Tools.shareLog;
-
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.kdt.mcgui.mcVersionSpinner;
-
-import net.kdt.pojavlaunch.CustomControlsActivity;
 import git.artdeell.mojo.R;
-
 import net.kdt.pojavlaunch.Tools;
-import net.kdt.pojavlaunch.contracts.OpenDocumentWithExtension;
 import net.kdt.pojavlaunch.extra.ExtraConstants;
 import net.kdt.pojavlaunch.extra.ExtraCore;
-import net.kdt.pojavlaunch.instances.Instance;
-import net.kdt.pojavlaunch.instances.Instances;
-import net.kdt.pojavlaunch.progresskeeper.ProgressKeeper;
-import net.kdt.pojavlaunch.utils.FileUtils;
-
-import java.io.File;
 
 public class MainMenuFragment extends Fragment {
     public static final String TAG = "MainMenuFragment";
 
-    private mcVersionSpinner mVersionSpinner;
-
-    private final ActivityResultLauncher<Object> mModInstallerLauncher =
-            registerForActivityResult(new OpenDocumentWithExtension("jar"), (data)->{
-                if(data != null) Tools.launchModInstaller(requireContext(), data);
-            });
-
-    public MainMenuFragment(){
+    public MainMenuFragment() {
         super(R.layout.fragment_launcher);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Button mNewsButton = view.findViewById(R.id.news_button);
-        Button mDiscordButton = view.findViewById(R.id.social_media_button);
-        Button mCustomControlButton = view.findViewById(R.id.custom_control_button);
-        Button mInstallJarButton = view.findViewById(R.id.install_jar_button);
-        Button mShareLogsButton = view.findViewById(R.id.share_logs_button);
-        Button mOpenDirectoryButton = view.findViewById(R.id.open_files_button);
+        View touch = view.findViewById(R.id.target_touch_layer);
+        if (touch != null) {
+            touch.setOnTouchListener((v, e) -> {
+                if (e.getAction() != MotionEvent.ACTION_UP) return true;
+                float x = e.getX() / v.getWidth();
+                float y = e.getY() / v.getHeight();
 
-        ImageButton mEditProfileButton = view.findViewById(R.id.edit_profile_button);
-        Button mPlayButton = view.findViewById(R.id.play_button);
-        mVersionSpinner = view.findViewById(R.id.mc_version_spinner);
+                // Add Account card on the right.
+                if (x >= 0.79f && x <= 0.99f && y >= 0.09f && y <= 0.27f) {
+                    ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true);
+                    return true;
+                }
 
-        mNewsButton.setOnClickListener(v -> Tools.openURL(requireActivity(), Tools.URL_HOME));
-        mDiscordButton.setOnClickListener(v -> Tools.openURL(requireActivity(), getString(R.string.social_media_invite)));
-        mCustomControlButton.setOnClickListener(v -> startActivity(new Intent(requireContext(), CustomControlsActivity.class)));
-        mInstallJarButton.setOnClickListener(v -> runInstallerWithConfirmation());
-        mEditProfileButton.setOnClickListener(v -> mVersionSpinner.openProfileEditor(requireActivity()));
+                // Three instance Play buttons.
+                if (x >= 0.14f && x <= 0.79f && y >= 0.37f && y <= 0.67f) {
+                    ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true);
+                    return true;
+                }
 
-        mPlayButton.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true));
+                // Discord card.
+                if (x >= 0.79f && x <= 0.99f && y >= 0.47f && y <= 0.62f) {
+                    Tools.openURL(requireActivity(), getString(R.string.social_media_invite));
+                    return true;
+                }
 
-        mShareLogsButton.setOnClickListener((v) -> shareLog(requireContext()));
-
-        mOpenDirectoryButton.setOnClickListener((v)-> openGameDirectory(v.getContext()));
-
-
-        mNewsButton.setOnLongClickListener((v)->{
-            Tools.swapFragment(requireActivity(), GamepadMapperFragment.class, GamepadMapperFragment.TAG, null);
-            return true;
-        });
-    }
-
-    private void openGameDirectory(Context context) {
-        Instance instance = Instances.loadSelectedInstance();
-        if(instance == null) {
-            Toast.makeText(context, R.string.no_instance, Toast.LENGTH_LONG).show();
-            return;
-        }
-        File gameDirectory = instance.getGameDirectory();
-        if(FileUtils.ensureDirectorySilently(gameDirectory)) {
-            openPath(context, gameDirectory, false);
-        }else {
-            Toast.makeText(context, R.string.gamedir_open_failed, Toast.LENGTH_LONG).show();
+                // Settings.
+                if (x <= 0.15f && y >= 0.66f) {
+                    View button = requireActivity().findViewById(R.id.setting_button);
+                    if (button != null) button.performClick();
+                    return true;
+                }
+                return true;
+            });
         }
     }
 
@@ -96,11 +62,5 @@ public class MainMenuFragment extends Fragment {
     public void onResume() {
         super.onResume();
         ExtraCore.setValue(ExtraConstants.REFRESH_ACCOUNT_SPINNER, true);
-    }
-
-    private void runInstallerWithConfirmation() {
-        if (ProgressKeeper.getTaskCount() == 0) {
-            mModInstallerLauncher.launch(null);
-        } else Toast.makeText(requireContext(), R.string.tasks_ongoing, Toast.LENGTH_LONG).show();
     }
 }
