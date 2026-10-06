@@ -29,7 +29,7 @@ public class MainMenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         ImageView artwork = view.findViewById(R.id.target_ui_artwork);
 
-        byte[] bytes = Base64.decode(TargetUiAsset.BASE64_WEBP, Base64.DEFAULT);
+        byte[] bytes = Base64.decode(TargetUiAsset.getBase64Webp(), Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         artwork.setImageBitmap(bitmap);
 
