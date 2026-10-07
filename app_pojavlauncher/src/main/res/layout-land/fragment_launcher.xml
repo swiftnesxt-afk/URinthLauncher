@@ -395,7 +395,7 @@
                         android:background="#55030A12" />
 
                     <LinearLayout
-                        android:layout_width="58%"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
