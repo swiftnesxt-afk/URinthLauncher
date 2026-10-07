@@ -76,18 +76,18 @@
             <LinearLayout
                 android:id="@+id/nav_home"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="1dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:background="@drawable/sidebar_active_pill"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_px_home"
                     android:tint="#EAF2FA"
                     android:contentDescription="@null" />
@@ -95,26 +95,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="7dp"
                     android:text="Home"
                     android:textColor="#F4F7FA"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 <LinearLayout
                 android:id="@+id/nav_instances"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="1dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:background="@drawable/sidebar_nav_ripple"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_px_experiment"
                     android:tint="#EAF2FA"
                     android:contentDescription="@null" />
@@ -122,26 +122,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="7dp"
                     android:text="Instances"
                     android:textColor="#F4F7FA"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 <LinearLayout
                 android:id="@+id/nav_modpacks"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="1dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:background="@drawable/sidebar_nav_ripple"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_px_experiment"
                     android:tint="#EAF2FA"
                     android:contentDescription="@null" />
@@ -149,26 +149,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="7dp"
                     android:text="Modpacks"
                     android:textColor="#F4F7FA"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 <LinearLayout
                 android:id="@+id/nav_mods"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="1dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:background="@drawable/sidebar_nav_ripple"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_px_experiment"
                     android:tint="#EAF2FA"
                     android:contentDescription="@null" />
@@ -176,26 +176,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="7dp"
                     android:text="Mods"
                     android:textColor="#F4F7FA"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 <LinearLayout
                 android:id="@+id/nav_shaders"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="1dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:background="@drawable/sidebar_nav_ripple"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_px_experiment"
                     android:tint="#EAF2FA"
                     android:contentDescription="@null" />
@@ -203,26 +203,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="7dp"
                     android:text="Shaders"
                     android:textColor="#F4F7FA"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 <LinearLayout
                 android:id="@+id/nav_worlds"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="1dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:background="@drawable/sidebar_nav_ripple"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_px_experiment"
                     android:tint="#EAF2FA"
                     android:contentDescription="@null" />
@@ -230,26 +230,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="7dp"
                     android:text="Worlds"
                     android:textColor="#F4F7FA"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 <LinearLayout
                 android:id="@+id/nav_resource_packs"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="1dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:background="@drawable/sidebar_nav_ripple"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_px_folder"
                     android:tint="#EAF2FA"
                     android:contentDescription="@null" />
@@ -257,26 +257,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="7dp"
                     android:text="Resource Packs"
                     android:textColor="#F4F7FA"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 <LinearLayout
                 android:id="@+id/nav_servers"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="1dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:background="@drawable/sidebar_nav_ripple"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_px_book"
                     android:tint="#EAF2FA"
                     android:contentDescription="@null" />
@@ -284,26 +284,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="7dp"
                     android:text="Servers"
                     android:textColor="#F4F7FA"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 <LinearLayout
                 android:id="@+id/nav_settings"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="1dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:background="@drawable/sidebar_nav_ripple"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_sharp_settings_24"
                     android:tint="#EAF2FA"
                     android:contentDescription="@null" />
@@ -311,10 +311,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="7dp"
                     android:text="Settings"
                     android:textColor="#F4F7FA"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <Space
