@@ -44,7 +44,6 @@
         <item name="android:background">@drawable/button_flat_toggle</item>
     </style>
 
-
     <style name="LauncherFragment_Divider">
         <item name="android:layout_width">@dimen/padding_tiny</item>
         <item name="android:layout_height">0dp</item>
@@ -70,5 +69,40 @@
         <item name="android:id">@id/dimension_tracker</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="ModrinthNavItem" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="ModrinthNavRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">4dp</item>
+    </style>
+
+    <style name="ModrinthNavLabel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+    <style name="ModrinthNativeTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#00F5D4</item>
+        <item name="colorAccent">#00F5D4</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">#06111D</item>
+        <item name="android:statusBarColor">#06111D</item>
     </style>
 </resources>

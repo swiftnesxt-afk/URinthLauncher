@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+    android:layout_marginEnd="8dp" android:orientation="vertical" android:background="@drawable/modrinth_card" android:padding="10dp">
+    <View android:layout_width="match_parent" android:layout_height="76dp" android:background="@drawable/modrinth_landscape"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingTop="6dp" android:text="URinthH" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Vannila 26.3" android:textColor="#9FB7BE" android:textSize="11sp"/>
+    <Space android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1"/>
+    <Button android:id="@+id/instance_play_button" android:layout_width="match_parent" android:layout_height="32dp" android:text="Play" android:textAllCaps="false" android:textColor="#001B18" android:background="@drawable/modrinth_play"/>
+</LinearLayout>

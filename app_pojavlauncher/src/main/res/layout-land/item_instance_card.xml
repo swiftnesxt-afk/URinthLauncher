@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="0dp"
+    android:layout_height="120dp"
+    android:layout_marginEnd="6dp"
+    android:clipToOutline="true"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="#071B24"
+    app:cardCornerRadius="12dp"
+    app:strokeColor="#00F5D4"
+    app:strokeWidth="1dp"
+    app:rippleColor="#3300F5D4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Top 60% = 96dp. -->
+        <ImageView
+            android:id="@+id/instance_art"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Bottom 40% = 64dp. -->
+        <LinearLayout
+            android:id="@+id/instance_info"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="6dp"
+            android:paddingEnd="4dp"
+            android:background="#E6072029"
+            app:layout_constraintTop_toBottomOf="@id/instance_art"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/instance_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_instance_grass"
+                android:contentDescription="@null" />
+
+            <LinearLayout
+                android:id="@+id/instance_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/instance_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="URinthH"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp" />
+
+                <TextView
+                    android:id="@+id/instance_version"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:maxLines="1"
+                    android:text="Vannila 26.3"
+                    android:textColor="#A3C2C2"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/instance_play"
+                android:layout_width="58dp"
+                android:layout_height="30dp"
+                android:minWidth="58dp"
+                android:minHeight="30dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Play"
+                android:textAllCaps="false"
+                android:textColor="#001A18"
+                android:textSize="8sp"
+                android:icon="@drawable/ic_arrow_play"
+                app:iconTint="#001A18"
+                app:iconGravity="textStart"
+                app:iconPadding="2dp"
+                app:backgroundTint="#00F5D4"
+                app:cornerRadius="18dp" />
+
+            <ImageButton
+                android:id="@+id/instance_menu"
+                android:layout_width="28dp"
+                android:layout_height="40dp"
+                android:padding="6dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_native_more_vert"
+                android:contentDescription="More instance actions" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

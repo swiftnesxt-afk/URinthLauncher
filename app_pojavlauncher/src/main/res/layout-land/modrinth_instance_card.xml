@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginEnd="6dp" android:orientation="vertical" android:background="@drawable/modrinth_card">
+    <View android:layout_width="match_parent" android:layout_height="105dp" android:background="@drawable/modrinth_landscape"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:gravity="center_vertical" android:padding="5dp">
+        <ImageView android:layout_width="42dp" android:layout_height="42dp" android:src="@drawable/ic_modrinth"/>
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="5dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="URinthH" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Vannila 26.3" android:textColor="#A3C2C2" android:textSize="10sp"/>
+        </LinearLayout>
+        <TextView android:id="@+id/instance_play" android:layout_width="58dp" android:layout_height="30dp" android:gravity="center" android:text="▷ Play" android:textColor="#001A18" android:textStyle="bold" android:textSize="10sp" android:background="@drawable/modrinth_play"/>
+        <TextView android:layout_width="14dp" android:layout_height="wrap_content" android:gravity="center" android:text="⋮" android:textColor="#FFFFFF" android:textSize="16sp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:layout_marginEnd="5dp"
+    android:padding="4dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/modrinth_card">
+
+    <ImageView
+        android:id="@+id/mod_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:background="@drawable/modrinth_outline"
+        android:src="@drawable/ic_px_experiment"
+        android:tint="#00F5D4"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="6dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/mod_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sodium"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/mod_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NeoForge 1.21.1"
+            android:textColor="#A3C2C2"
+            android:textSize="9sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="28dp"
+        android:gravity="center"
+        android:text="Add"
+        android:textColor="#001A18"
+        android:textStyle="bold"
+        android:textSize="10sp"
+        android:background="@drawable/modrinth_play"/>
+</LinearLayout>
