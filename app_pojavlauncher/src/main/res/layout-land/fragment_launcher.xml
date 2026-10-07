@@ -259,8 +259,8 @@
                         android:textOff="OFF"
                         android:textOn="ON"
                         app:showText="true"
-                        app:track="@drawable/modrinth_switch_track"
-                        app:thumb="@drawable/modrinth_switch_thumb"
+                        app:trackTint="@color/modrinth_switch_track_tint"
+                        app:thumbTint="@color/modrinth_switch_thumb_tint"
                         android:contentDescription="Toggle UrinthUltra Mode" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
