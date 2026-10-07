@@ -1,25 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="0dp" android:layout_height="match_parent"
-    android:layout_marginEnd="6dp"
-    app:cardBackgroundColor="#0A2029" app:strokeColor="#087C7C" app:strokeWidth="1dp" app:cardCornerRadius="12dp">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
-        <ImageView android:id="@+id/instance_art" android:layout_width="match_parent" android:layout_height="105dp"
-            android:scaleType="centerCrop" android:src="@drawable/modrinth_landscape" android:contentDescription="@null"/>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
-            android:gravity="center_vertical" android:padding="7dp">
-            <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/ic_modrinth" android:contentDescription="@null"/>
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" android:orientation="vertical">
-                <TextView android:id="@+id/instance_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="URinthH" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
-                <TextView android:id="@+id/instance_version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Vannila 26.3" android:textColor="#A3C2C2" android:textSize="10sp"/>
+    android:layout_width="0dp"
+    android:layout_height="170dp"
+    android:layout_marginEnd="8dp"
+    android:clipToOutline="true"
+    app:cardBackgroundColor="#071B24"
+    app:strokeColor="#087C7C"
+    app:strokeWidth="1dp"
+    app:cardCornerRadius="12dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/instance_art"
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/modrinth_landscape"
+            android:contentDescription="@null" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
+            android:background="#35000000" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_gravity="bottom"
+            android:paddingStart="12dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="#E6072029">
+
+            <ImageView
+                android:id="@+id/instance_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_instance_grass"
+                android:contentDescription="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/instance_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/instance_icon"
+                app:layout_constraintEnd_toStartOf="@id/instance_play"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/instance_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="URinthH"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/instance_version"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="1"
+                    android:text="Vannila 26.3"
+                    android:textColor="#A8BEC5"
+                    android:textSize="10sp" />
             </LinearLayout>
-            <com.google.android.material.button.MaterialButton android:id="@+id/instance_play"
-                android:layout_width="64dp" android:layout_height="32dp" android:minWidth="0dp" android:minHeight="0dp"
-                android:paddingHorizontal="8dp" android:text="▷ Play" android:textAllCaps="false" android:textColor="#001A18" android:textSize="10sp"
-                app:backgroundTint="#00F5D4" app:cornerRadius="16dp"/>
-            <ImageButton android:id="@+id/instance_menu" android:layout_width="32dp" android:layout_height="40dp"
-                android:background="?attr/selectableItemBackgroundBorderless" android:src="@drawable/ic_native_more_vert" android:contentDescription="More instance actions"/>
-        </LinearLayout>
-    </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/instance_play"
+                android:layout_width="64dp"
+                android:layout_height="36dp"
+                android:minWidth="64dp"
+                android:minHeight="36dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="▷ Play"
+                android:textAllCaps="false"
+                android:textColor="#001A18"
+                android:textSize="10sp"
+                app:backgroundTint="#00F5D4"
+                app:cornerRadius="18dp"
+                app:layout_constraintEnd_toStartOf="@id/instance_menu"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageButton
+                android:id="@+id/instance_menu"
+                android:layout_width="32dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_native_more_vert"
+                android:contentDescription="More instance actions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 </com.google.android.material.card.MaterialCardView>
