@@ -66,7 +66,7 @@ public class MainMenuFragment extends Fragment {
 
     private void loadTargetArtwork(ImageView artwork) {
         if (artwork == null) return;
-        try (InputStream in = getResources().openRawResource(R.raw.modrinth_target_b64);
+        try (InputStream in = getResources().openRawResource(R.raw.modrinth_target);
              ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             byte[] buffer = new byte[4096];
             int count;
