@@ -23,7 +23,7 @@ public class InstanceCardAdapter extends RecyclerView.Adapter<InstanceCardAdapte
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_instance_card, parent, false);
         int available = parent.getWidth();
         if (available <= 0) available = parent.getResources().getDisplayMetrics().widthPixels * 55 / 100;
-        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(Math.max(1, available / 3), ViewGroup.LayoutParams.MATCH_PARENT);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(Math.max(1, available / 3), ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.setMargins(0, 0, 6, 0);
         v.setLayoutParams(lp);
         return new Holder(v);
