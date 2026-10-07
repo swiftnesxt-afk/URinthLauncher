@@ -3,22 +3,205 @@
     android:id="@+id/fragment_menu_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#020D18">
+    android:background="#07151D">
 
-    <ImageView
-        android:id="@+id/target_ui_artwork"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:contentDescription="@null" />
+        android:orientation="vertical">
 
-    <View
-        android:id="@+id/target_touch_layer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@android:color/transparent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="18dp"
+            android:background="#0A2029">
+
+            <TextView
+                android:layout_width="34dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="☰"
+                android:textColor="#FFFFFF"
+                android:textSize="23sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:text="◆  ModrinthLauncher"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Made By: Macase, Nile"
+                android:textColor="#B8CBD2"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="210dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:background="#081820">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="14dp"
+                    android:text="⌂   Home"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:background="@drawable/modrinth_nav_active" />
+
+                <TextView android:layout_width="match_parent" android:layout_height="40dp" android:gravity="center_vertical" android:paddingStart="14dp" android:text="▣   Instances" android:textColor="#AFC1C8" android:textSize="14sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="40dp" android:gravity="center_vertical" android:paddingStart="14dp" android:text="◈   Modpacks" android:textColor="#AFC1C8" android:textSize="14sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="40dp" android:gravity="center_vertical" android:paddingStart="14dp" android:text="◆   Mods" android:textColor="#AFC1C8" android:textSize="14sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="40dp" android:gravity="center_vertical" android:paddingStart="14dp" android:text="✦   Shaders" android:textColor="#AFC1C8" android:textSize="14sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="40dp" android:gravity="center_vertical" android:paddingStart="14dp" android:text="▧   Worlds" android:textColor="#AFC1C8" android:textSize="14sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="40dp" android:gravity="center_vertical" android:paddingStart="14dp" android:text="▤   Resource Packs" android:textColor="#AFC1C8" android:textSize="14sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="40dp" android:gravity="center_vertical" android:paddingStart="14dp" android:text="◇   Servers" android:textColor="#AFC1C8" android:textSize="14sp"/>
+                <Space android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1"/>
+                <TextView android:layout_width="match_parent" android:layout_height="40dp" android:gravity="center_vertical" android:paddingStart="14dp" android:text="⚙   Settings" android:textColor="#AFC1C8" android:textSize="14sp"/>
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fillViewport="true"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="92dp"
+                        android:gravity="bottom"
+                        android:padding="16dp"
+                        android:text="Play, Explore, Create, Together."
+                        android:textColor="#FFFFFF"
+                        android:textSize="27sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/modrinth_hero" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="12dp"
+                        android:text="A better way to play Minecraft with your friends."
+                        android:textColor="#B8CBD2"
+                        android:textSize="13sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:orientation="horizontal">
+
+                        <include layout="@layout/modrinth_instance_card"/>
+                        <include layout="@layout/modrinth_instance_card"/>
+                        <include layout="@layout/modrinth_instance_card"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="8dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Latest Mods" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:id="@+id/mods_view_all" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="View all" android:textColor="#00E6B8" android:textSize="13sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="112dp"
+                        android:orientation="horizontal">
+
+                        <include layout="@layout/modrinth_mod_card"/>
+                        <include layout="@layout/modrinth_mod_card"/>
+                        <include layout="@layout/modrinth_mod_card"/>
+                        <include layout="@layout/modrinth_mod_card"/>
+                        <include layout="@layout/modrinth_mod_card"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="#091C25">
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ACCOUNT" android:textColor="#7F9AA3" android:textSize="11sp"/>
+                <Button
+                    android:id="@+id/add_account_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:text="+  Add Account"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/modrinth_outline"/>
+
+                <Button
+                    android:id="@+id/check_updates_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Check Updates"
+                    android:textAllCaps="false"
+                    android:textColor="#D7E6EA"
+                    android:background="@drawable/modrinth_card"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="22dp" android:text="UrinthUltra Mode" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+                <Switch
+                    android:id="@+id/urinth_ultra_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Enabled"
+                    android:textColor="#AFC1C8"
+                    android:showText="true" />
+
+                <Space android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/discord_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:gravity="center"
+                    android:text="◉   Discord"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:background="@drawable/modrinth_card"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
     <com.kdt.mcgui.mcVersionSpinner
         android:id="@+id/mc_version_spinner"
