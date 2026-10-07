@@ -32,6 +32,8 @@ public class MainMenuFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        android.widget.ImageView hero = view.findViewById(R.id.hero_art);
+        if (hero != null) hero.setImageBitmap(net.kdt.pojavlaunch.ui.AssetBitmapLoader.loadBase64Jpeg(requireContext(), R.raw.modrinth_hero_jpg_b64));
         setupInstanceRecycler(view);
         setupModRecycler(view);
         setupNavigation(view);
