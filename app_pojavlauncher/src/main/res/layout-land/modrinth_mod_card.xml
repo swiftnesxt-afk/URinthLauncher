@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginEnd="7dp" android:padding="7dp" android:orientation="vertical" android:background="@drawable/modrinth_card">
-<TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="◉   Sodium&#10;      NeoForge 1.21.1" android:textColor="#FFFFFF" android:textSize="10sp"/>
-<TextView android:layout_width="48dp" android:layout_height="28dp" android:layout_gravity="end" android:gravity="center" android:text="Add" android:textColor="#001A18" android:textStyle="bold" android:textSize="10sp" android:background="@drawable/modrinth_play"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginEnd="5dp" android:padding="5dp" android:orientation="vertical" android:background="@drawable/modrinth_card">
+    <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:text="◉   Sodium&#10;      NeoForge 1.21.1" android:textColor="#FFFFFF" android:textSize="8sp"/>
+    <TextView android:layout_width="42dp" android:layout_height="22dp" android:layout_gravity="end" android:gravity="center" android:text="Add" android:textColor="#001A18" android:textStyle="bold" android:textSize="8sp" android:background="@drawable/modrinth_play"/>
 </LinearLayout>
