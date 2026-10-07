@@ -115,8 +115,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:focusable="true">
+                android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -145,8 +144,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:focusable="true">
+                android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -175,8 +173,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:focusable="true">
+                android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -205,8 +202,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:focusable="true">
+                android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -235,8 +231,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:focusable="true">
+                android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -265,8 +260,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:focusable="true">
+                android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -295,8 +289,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:focusable="true">
+                android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -325,8 +318,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:focusable="true">
+                android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:layout_width="24dp"
