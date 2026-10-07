@@ -4,10 +4,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.button.MaterialButton;
 import git.artdeell.mojo.R;
 
@@ -26,7 +24,9 @@ public class ModCardAdapter extends RecyclerView.Adapter<ModCardAdapter.Holder> 
 
     @NonNull @Override public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mod_card, parent, false);
-        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(parent.getMeasuredWidth() / 5, ViewGroup.LayoutParams.MATCH_PARENT);
+        int available = parent.getWidth();
+        if (available <= 0) available = parent.getResources().getDisplayMetrics().widthPixels * 55 / 100;
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(Math.max(1, available / 5), ViewGroup.LayoutParams.MATCH_PARENT);
         lp.setMargins(0, 0, 5, 0);
         v.setLayoutParams(lp);
         return new Holder(v);
