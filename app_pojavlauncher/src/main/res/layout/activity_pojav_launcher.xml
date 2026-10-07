@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#061018">
-
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="#061018">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container_fragment"
         android:name="net.kdt.pojavlaunch.fragments.MainMenuFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <ImageButton
-        android:id="@+id/setting_button"
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        android:visibility="gone"
-        android:contentDescription="@null" />
+        android:layout_width="match_parent" android:layout_height="match_parent" />
+    <ImageButton android:id="@+id/setting_button" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" android:contentDescription="@null" />
 </FrameLayout>
