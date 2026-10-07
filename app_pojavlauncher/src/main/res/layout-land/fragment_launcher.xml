@@ -172,7 +172,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/instance_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="180dp"
                 android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:overScrollMode="never"
@@ -256,6 +256,12 @@
                         android:layout_width="54dp"
                         android:layout_height="36dp"
                         android:checked="false"
+                        android:textOff="OFF"
+                        android:textOn="ON"
+                        android:showText="true"
+                        app:showText="true"
+                        app:track="@drawable/modrinth_switch_track"
+                        app:thumb="@drawable/modrinth_switch_thumb"
                         android:contentDescription="Toggle UrinthUltra Mode" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
