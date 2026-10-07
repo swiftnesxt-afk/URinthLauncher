@@ -25,7 +25,7 @@ public class ModCardAdapter extends RecyclerView.Adapter<ModCardAdapter.Holder> 
     @NonNull @Override public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mod_card, parent, false);
         int available = parent.getWidth();
-        if (available <= 0) available = parent.getResources().getDisplayMetrics().widthPixels * 55 / 100;
+        if (available <= 0) available = parent.getResources().getDisplayMetrics().widthPixels * 64 / 100;
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(Math.max(1, available / 5), ViewGroup.LayoutParams.MATCH_PARENT);
         lp.setMargins(0, 0, 5, 0);
         v.setLayoutParams(lp);
