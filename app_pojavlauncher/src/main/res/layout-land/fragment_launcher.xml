@@ -258,7 +258,6 @@
                         android:checked="false"
                         android:textOff="OFF"
                         android:textOn="ON"
-                        android:showText="true"
                         app:showText="true"
                         app:track="@drawable/modrinth_switch_track"
                         app:thumb="@drawable/modrinth_switch_thumb"
