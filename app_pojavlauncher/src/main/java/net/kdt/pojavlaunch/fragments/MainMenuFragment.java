@@ -2,7 +2,9 @@ package net.kdt.pojavlaunch.fragments;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +28,13 @@ public class MainMenuFragment extends Fragment {
         View settings = view.findViewById(R.id.nav_settings);
         View account = view.findViewById(R.id.add_account_button);
         View discord = view.findViewById(R.id.discord_button);
+
+        // Match the target dashboard's distinct latest-mod cards.
+        setupModCard(view.findViewById(R.id.mod_sodium), "Sodium", "NeoForge 1.21.1", R.drawable.ic_px_zap, "#A7E35A");
+        setupModCard(view.findViewById(R.id.mod_lithium), "Lithium", "Fabric 1.21.1", R.drawable.ic_px_speed, "#A56BFF");
+        setupModCard(view.findViewById(R.id.mod_iris), "Iris", "Fabric 1.21.1", R.drawable.ic_px_image_renderer, "#63D7FF");
+        setupModCard(view.findViewById(R.id.mod_distant), "Distant Horizons", "Forge 1.21.1", R.drawable.ic_px_viewport_expand, "#55C7D9");
+        setupModCard(view.findViewById(R.id.mod_xaero), "Xaero's Minimap", "Forge 1.21.1", R.drawable.ic_px_control_size, "#D7E2EA");
 
         View play1 = view.findViewById(R.id.instance_one).findViewById(R.id.instance_play);
         View play2 = view.findViewById(R.id.instance_two).findViewById(R.id.instance_play);
@@ -71,6 +80,20 @@ public class MainMenuFragment extends Fragment {
             updates.setOnClickListener(v ->
                     android.widget.Toast.makeText(requireContext(),
                             "Checking for updates…", android.widget.Toast.LENGTH_SHORT).show());
+        }
+    }
+
+    
+    private void setupModCard(View card, String name, String version, int iconRes, String tint) {
+        if (card == null) return;
+        TextView nameView = card.findViewById(R.id.mod_name);
+        TextView versionView = card.findViewById(R.id.mod_version);
+        ImageView iconView = card.findViewById(R.id.mod_icon);
+        if (nameView != null) nameView.setText(name);
+        if (versionView != null) versionView.setText(version);
+        if (iconView != null) {
+            iconView.setImageResource(iconRes);
+            iconView.setColorFilter(Color.parseColor(tint));
         }
     }
 
