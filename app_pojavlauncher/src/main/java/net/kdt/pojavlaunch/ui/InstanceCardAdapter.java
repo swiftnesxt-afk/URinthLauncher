@@ -3,45 +3,83 @@ package net.kdt.pojavlaunch.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.button.MaterialButton;
+
 import git.artdeell.mojo.R;
 
 public class InstanceCardAdapter extends RecyclerView.Adapter<InstanceCardAdapter.Holder> {
-    public interface Listener { void onPlay(int position); void onMenu(int position); }
+    public interface Listener {
+        void onPlay(int position);
+        void onMenu(int position);
+    }
+
     private final Listener listener;
     private final String[] names = {"URinthH", "URinthH", "URinthH"};
     private final String[] versions = {"Vannila 26.3", "Vannila 26.3", "Vannila 26.3"};
+    private final int[] artwork = {
+        R.raw.modrinth_card1_jpg_b64,
+        R.raw.modrinth_card2_jpg_b64,
+        R.raw.modrinth_card3_jpg_b64
+    };
 
-    public InstanceCardAdapter(Listener listener) { this.listener = listener; }
+    public InstanceCardAdapter(Listener listener) {
+        this.listener = listener;
+    }
 
-    @NonNull @Override public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_instance_card, parent, false);
+    @NonNull
+    @Override
+    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_instance_card, parent, false);
+
+        // Three cards must fit inside the 55% center panel without the third card
+        // being pushed outside the RecyclerView. 6dp is the gap between cards.
         int available = parent.getWidth();
-        if (available <= 0) available = parent.getResources().getDisplayMetrics().widthPixels * 55 / 100;
-        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(Math.max(1, available / 3), ViewGroup.LayoutParams.WRAP_CONTENT);
+        if (available <= 0) {
+            available = Math.round(parent.getResources().getDisplayMetrics().widthPixels * 0.55f) - 12;
+        }
+        int cardWidth = Math.max(1, (available - 12) / 3);
+
+        RecyclerView.LayoutParams lp =
+                new RecyclerView.LayoutParams(cardWidth, dp(parent, 160));
         lp.setMargins(0, 0, 6, 0);
         v.setLayoutParams(lp);
         return new Holder(v);
     }
 
-    @Override public void onBindViewHolder(@NonNull Holder h, int position) {
-        int[] artwork = { R.raw.modrinth_card1_jpg_b64, R.raw.modrinth_card2_jpg_b64, R.raw.modrinth_card3_jpg_b64 };
-        h.art.setImageBitmap(AssetBitmapLoader.loadBase64Jpeg(h.itemView.getContext(), artwork[position]));
+    private static int dp(ViewGroup parent, int value) {
+        return Math.round(value * parent.getResources().getDisplayMetrics().density);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull Holder h, int position) {
+        h.art.setImageBitmap(
+                AssetBitmapLoader.loadBase64Jpeg(h.itemView.getContext(), artwork[position]));
         h.name.setText(names[position]);
         h.version.setText(versions[position]);
         h.play.setOnClickListener(v -> listener.onPlay(position));
         h.menu.setOnClickListener(v -> listener.onMenu(position));
     }
 
-    @Override public int getItemCount() { return names.length; }
+    @Override
+    public int getItemCount() {
+        return names.length;
+    }
 
     static class Holder extends RecyclerView.ViewHolder {
-        final TextView name, version; final MaterialButton play; final ImageButton menu; final ImageView art;
+        final TextView name;
+        final TextView version;
+        final MaterialButton play;
+        final ImageButton menu;
+        final ImageView art;
+
         Holder(View v) {
             super(v);
             art = v.findViewById(R.id.instance_art);
