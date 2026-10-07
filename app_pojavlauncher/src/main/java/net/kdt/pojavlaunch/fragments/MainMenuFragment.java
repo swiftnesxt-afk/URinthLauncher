@@ -1,15 +1,18 @@
 package net.kdt.pojavlaunch.fragments;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import git.artdeell.mojo.R;
 import net.kdt.pojavlaunch.Tools;
@@ -17,7 +20,7 @@ import net.kdt.pojavlaunch.extra.ExtraConstants;
 import net.kdt.pojavlaunch.extra.ExtraCore;
 
 public class MainMenuFragment extends Fragment {
-    public static final String TAG = "MainMenuFragment"; // visible dashboard build
+    public static final String TAG = "MainMenuFragment";
 
     public MainMenuFragment() {
         super(R.layout.fragment_launcher);
@@ -25,37 +28,68 @@ public class MainMenuFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Button addAccount = view.findViewById(R.id.add_account_button);
+        loadTargetArtwork(view);
+
+        View addAccount = view.findViewById(R.id.add_account_button);
         if (addAccount != null) {
-            addAccount.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true));
+            addAccount.setOnClickListener(v ->
+                    ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true));
         }
 
-        Button checkUpdates = view.findViewById(R.id.check_updates_button);
+        View checkUpdates = view.findViewById(R.id.check_updates_button);
         if (checkUpdates != null) {
             checkUpdates.setOnClickListener(v ->
                     Toast.makeText(requireContext(), "Checking for updates…", Toast.LENGTH_SHORT).show());
         }
 
-        Switch ultra = view.findViewById(R.id.urinth_ultra_switch);
+        View ultra = view.findViewById(R.id.urinth_ultra_switch);
         if (ultra != null) {
-            ultra.setOnCheckedChangeListener((buttonView, isChecked) ->
-                    Toast.makeText(requireContext(), isChecked ? "UrinthUltra Mode: ON" : "UrinthUltra Mode: OFF", Toast.LENGTH_SHORT).show());
+            ultra.setOnClickListener(v ->
+                    Toast.makeText(requireContext(), "UrinthUltra Mode", Toast.LENGTH_SHORT).show());
         }
 
-        TextView discord = view.findViewById(R.id.discord_button);
+        View discord = view.findViewById(R.id.discord_button);
         if (discord != null) {
-            discord.setOnClickListener(v -> Tools.openURL(requireActivity(), getString(R.string.social_media_invite)));
+            discord.setOnClickListener(v ->
+                    Tools.openURL(requireActivity(), getString(R.string.social_media_invite)));
         }
 
-        TextView viewAll = view.findViewById(R.id.mods_view_all);
-        if (viewAll != null) {
-            viewAll.setOnClickListener(v ->
-                    Toast.makeText(requireContext(), "All Mods", Toast.LENGTH_SHORT).show());
+        View play = view.findViewById(R.id.instance_play_button);
+        if (play != null) {
+            play.setOnClickListener(v ->
+                    ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true));
         }
+    }
 
-        View.OnClickListener play = v -> ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true);
-        View firstPlay = view.findViewById(R.id.instance_play_button);
-        if (firstPlay != null) firstPlay.setOnClickListener(play);
+    private void loadTargetArtwork(View root) {
+        try {
+            ByteArrayOutputStream text = new ByteArrayOutputStream();
+            for (int i = 0; i < 32; i++) {
+                int id = getResources().getIdentifier(
+                        String.format(java.util.Locale.US, "target_chunk_%02d", i),
+                        "raw",
+                        requireContext().getPackageName());
+                if (id == 0) throw new IllegalStateException("Missing target artwork chunk " + i);
+                try (InputStream in = getResources().openRawResource(id)) {
+                    byte[] buffer = new byte[4096];
+                    int n;
+                    while ((n = in.read(buffer)) != -1) text.write(buffer, 0, n);
+                }
+            }
+
+            byte[] imageBytes = Base64.decode(
+                    text.toString(StandardCharsets.US_ASCII.name()),
+                    Base64.DEFAULT);
+            android.graphics.Bitmap bitmap = BitmapFactory.decodeByteArray(
+                    imageBytes, 0, imageBytes.length);
+            if (bitmap == null) throw new IllegalStateException("Target artwork decode returned null");
+
+            android.widget.ImageView image = root.findViewById(R.id.target_launcher_art);
+            image.setImageBitmap(bitmap);
+        } catch (Throwable t) {
+            android.util.Log.e(TAG, "Failed to load exact launcher artwork", t);
+            Toast.makeText(requireContext(), "Launcher artwork failed to load", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
