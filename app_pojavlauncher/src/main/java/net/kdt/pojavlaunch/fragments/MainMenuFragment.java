@@ -30,7 +30,7 @@ public class MainMenuFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         ImageView artwork = view.findViewById(R.id.target_ui_artwork);
-        loadTargetArtwork(artwork);
+        // Artwork overlay disabled until the binary asset is valid.
 
         View touch = view.findViewById(R.id.target_touch_layer);
         if (touch != null) {
