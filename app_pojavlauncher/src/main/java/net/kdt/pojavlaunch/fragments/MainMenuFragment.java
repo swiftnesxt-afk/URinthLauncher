@@ -77,9 +77,25 @@ public class MainMenuFragment extends Fragment {
                 }
             }
 
-            byte[] imageBytes = Base64.decode(
-                    text.toString(StandardCharsets.US_ASCII.name()),
-                    Base64.DEFAULT);
+            String encoded = text.toString(StandardCharsets.US_ASCII.name())
+                    .replaceAll("\\s+", "")
+                    .replaceAll("[^A-Za-z0-9+/=]", "");
+
+            // Normalize padding so chunk boundaries or stray padding markers
+            // cannot make Android's Base64 decoder reject the launcher artwork.
+            int paddingStart = encoded.indexOf('=');
+            if (paddingStart >= 0) {
+                encoded = encoded.substring(0, paddingStart);
+            }
+            int remainder = encoded.length() % 4;
+            if (remainder == 1) {
+                throw new IllegalStateException("Invalid launcher artwork Base64 length");
+            }
+            if (remainder != 0) {
+                encoded += "====".substring(0, 4 - remainder);
+            }
+
+            byte[] imageBytes = Base64.decode(encoded, Base64.NO_WRAP);
             android.graphics.Bitmap bitmap = BitmapFactory.decodeByteArray(
                     imageBytes, 0, imageBytes.length);
             if (bitmap == null) throw new IllegalStateException("Target artwork decode returned null");
