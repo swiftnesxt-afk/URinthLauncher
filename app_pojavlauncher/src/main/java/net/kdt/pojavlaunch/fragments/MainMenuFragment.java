@@ -48,6 +48,8 @@ public class MainMenuFragment extends Fragment {
         }
 
         setupInstanceRecycler(view);
+        setupModRecycler(view);
+        setupRightPanel(view);
         setupNavigation(view);
         setupHeader(view);
     }
@@ -71,6 +73,46 @@ public class MainMenuFragment extends Fragment {
                     Toast.LENGTH_SHORT).show();
             }
         }));
+    }
+
+    private void setupModRecycler(View root) {
+        RecyclerView recycler = root.findViewById(R.id.mod_recycler);
+        recycler.setLayoutManager(
+            new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
+        recycler.setAdapter(new net.kdt.pojavlaunch.ui.ModCardAdapter(
+            name -> Toast.makeText(requireContext(), name + " selected", Toast.LENGTH_SHORT).show()));
+    }
+
+    private void setupRightPanel(View root) {
+        View add = root.findViewById(R.id.add_account_button);
+        if (add != null) {
+            add.setOnClickListener(v ->
+                ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true));
+        }
+
+        View updates = root.findViewById(R.id.check_updates_button);
+        if (updates != null) {
+            updates.setOnClickListener(v ->
+                Toast.makeText(requireContext(), "Checking for updates…", Toast.LENGTH_SHORT).show());
+        }
+
+        View discord = root.findViewById(R.id.discord_button);
+        if (discord != null) {
+            discord.setOnClickListener(v ->
+                Tools.openURL(requireContext(), getString(R.string.social_media_invite)));
+        }
+
+        View ultra = root.findViewById(R.id.ultra_switch);
+        if (ultra != null) {
+            ultra.setOnClickListener(v ->
+                Toast.makeText(requireContext(), "UrinthUltra Mode", Toast.LENGTH_SHORT).show());
+        }
+
+        View all = root.findViewById(R.id.mods_view_all);
+        if (all != null) {
+            all.setOnClickListener(v ->
+                Toast.makeText(requireContext(), "All latest mods", Toast.LENGTH_SHORT).show());
+        }
     }
 
     private void setupNavigation(View root) {
