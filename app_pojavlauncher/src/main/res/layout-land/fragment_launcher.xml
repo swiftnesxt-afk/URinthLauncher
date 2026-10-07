@@ -114,6 +114,8 @@
                 android:paddingStart="12dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:focusable="true">
 
                 <ImageView
@@ -142,6 +144,8 @@
                 android:paddingStart="12dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:focusable="true">
 
                 <ImageView
@@ -170,6 +174,8 @@
                 android:paddingStart="12dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:focusable="true">
 
                 <ImageView
@@ -198,6 +204,8 @@
                 android:paddingStart="12dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:focusable="true">
 
                 <ImageView
@@ -226,6 +234,8 @@
                 android:paddingStart="12dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:focusable="true">
 
                 <ImageView
@@ -254,6 +264,8 @@
                 android:paddingStart="12dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:focusable="true">
 
                 <ImageView
@@ -282,6 +294,8 @@
                 android:paddingStart="12dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:focusable="true">
 
                 <ImageView
@@ -310,6 +324,8 @@
                 android:paddingStart="12dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:focusable="true">
 
                 <ImageView
