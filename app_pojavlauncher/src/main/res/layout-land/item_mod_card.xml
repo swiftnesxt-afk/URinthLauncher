@@ -4,13 +4,13 @@
     android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginEnd="5dp"
     app:cardBackgroundColor="#0A2029" app:strokeColor="#087C7C" app:strokeWidth="1dp" app:cardCornerRadius="12dp">
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:padding="6dp" android:gravity="center_vertical">
-        <ImageView android:id="@+id/mod_icon" android:layout_width="48dp" android:layout_height="48dp" android:padding="5dp"
+        <ImageView android:id="@+id/mod_icon" android:layout_width="32dp" android:layout_height="32dp" android:padding="3dp"
             android:background="@drawable/native_outline" android:src="@drawable/ic_px_experiment" android:tint="#00F5D4" android:contentDescription="@null"/>
-        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" android:orientation="vertical">
-            <TextView android:id="@+id/mod_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sodium" android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold"/>
-            <TextView android:id="@+id/mod_version" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="NeoForge 1.21.1" android:textColor="#A3C2C2" android:textSize="9sp"/>
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="4dp" android:orientation="vertical">
+            <TextView android:id="@+id/mod_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sodium" android:textColor="#FFFFFF" android:textSize="7sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/mod_version" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="NeoForge 1.21.1" android:textColor="#A3C2C2" android:textSize="7sp"/>
         </LinearLayout>
-        <com.google.android.material.button.MaterialButton android:id="@+id/mod_add" android:layout_width="50dp" android:layout_height="30dp" android:minWidth="0dp" android:minHeight="0dp"
-            android:text="Add" android:textAllCaps="false" android:textColor="#001A18" android:textSize="10sp" app:backgroundTint="#00F5D4" app:cornerRadius="16dp"/>
+        <com.google.android.material.button.MaterialButton android:id="@+id/mod_add" android:layout_width="42dp" android:layout_height="22dp" android:minWidth="0dp" android:minHeight="0dp"
+            android:text="Add" android:textAllCaps="false" android:textColor="#001A18" android:textSize="8sp" app:backgroundTint="#00F5D4" app:cornerRadius="16dp"/>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
