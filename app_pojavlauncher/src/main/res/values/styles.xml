@@ -44,7 +44,6 @@
         <item name="android:background">@drawable/button_flat_toggle</item>
     </style>
 
-
     <style name="LauncherFragment_Divider">
         <item name="android:layout_width">@dimen/padding_tiny</item>
         <item name="android:layout_height">0dp</item>
@@ -72,5 +71,13 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
-    <style name="ModrinthNavItem" parent="@android:style/Widget.TextView"><item name="android:layout_width">match_parent</item><item name="android:layout_height">48dp</item><item name="android:layout_marginBottom">4dp</item><item name="android:gravity">center_vertical</item><item name="android:paddingStart">12dp</item><item name="android:textColor">#FFFFFF</item><item name="android:textSize">13sp</item></style>
+    <style name="ModrinthNavItem" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">11sp</item>
+    </style>
 </resources>
