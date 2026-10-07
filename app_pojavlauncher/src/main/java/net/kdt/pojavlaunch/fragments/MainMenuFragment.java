@@ -1,19 +1,15 @@
 package net.kdt.pojavlaunch.fragments;
 
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 import git.artdeell.mojo.R;
 import net.kdt.pojavlaunch.Tools;
@@ -29,56 +25,37 @@ public class MainMenuFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        ImageView artwork = view.findViewById(R.id.target_ui_artwork);
-        // Artwork overlay disabled until the binary asset is valid.
-
-        View touch = view.findViewById(R.id.target_touch_layer);
-        if (touch != null) {
-            touch.setOnTouchListener((v, e) -> {
-                if (e.getAction() != MotionEvent.ACTION_UP) return true;
-                float x = e.getX() / v.getWidth();
-                float y = e.getY() / v.getHeight();
-
-                if (x >= 0.79f && x <= 0.99f && y >= 0.09f && y <= 0.27f) {
-                    ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true);
-                    return true;
-                }
-
-                if (x >= 0.14f && x <= 0.79f && y >= 0.37f && y <= 0.67f) {
-                    ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true);
-                    return true;
-                }
-
-                if (x >= 0.79f && x <= 0.99f && y >= 0.47f && y <= 0.62f) {
-                    Tools.openURL(requireActivity(), getString(R.string.social_media_invite));
-                    return true;
-                }
-
-                if (x <= 0.15f && y >= 0.66f) {
-                    View button = requireActivity().findViewById(R.id.setting_button);
-                    if (button != null) button.performClick();
-                    return true;
-                }
-                return true;
-            });
+        Button addAccount = view.findViewById(R.id.add_account_button);
+        if (addAccount != null) {
+            addAccount.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true));
         }
-    }
 
-    private void loadTargetArtwork(ImageView artwork) {
-        if (artwork == null) return;
-        try (InputStream in = getResources().openRawResource(R.raw.modrinth_target);
-             ByteArrayOutputStream out = new ByteArrayOutputStream()) {
-            byte[] buffer = new byte[4096];
-            int count;
-            while ((count = in.read(buffer)) != -1) {
-                out.write(buffer, 0, count);
-            }
-            String encoded = new String(out.toByteArray(), StandardCharsets.US_ASCII);
-            byte[] imageBytes = Base64.decode(encoded, Base64.NO_WRAP);
-            artwork.setImageBitmap(BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length));
-        } catch (Exception ignored) {
-            // Keep the dark fallback background if the artwork cannot be decoded.
+        Button checkUpdates = view.findViewById(R.id.check_updates_button);
+        if (checkUpdates != null) {
+            checkUpdates.setOnClickListener(v ->
+                    Toast.makeText(requireContext(), "Checking for updates…", Toast.LENGTH_SHORT).show());
         }
+
+        Switch ultra = view.findViewById(R.id.urinth_ultra_switch);
+        if (ultra != null) {
+            ultra.setOnCheckedChangeListener((buttonView, isChecked) ->
+                    Toast.makeText(requireContext(), isChecked ? "UrinthUltra Mode: ON" : "UrinthUltra Mode: OFF", Toast.LENGTH_SHORT).show());
+        }
+
+        TextView discord = view.findViewById(R.id.discord_button);
+        if (discord != null) {
+            discord.setOnClickListener(v -> Tools.openURL(requireActivity(), getString(R.string.social_media_invite)));
+        }
+
+        TextView viewAll = view.findViewById(R.id.mods_view_all);
+        if (viewAll != null) {
+            viewAll.setOnClickListener(v ->
+                    Toast.makeText(requireContext(), "All Mods", Toast.LENGTH_SHORT).show());
+        }
+
+        View.OnClickListener play = v -> ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true);
+        View firstPlay = view.findViewById(R.id.instance_play_button);
+        if (firstPlay != null) firstPlay.setOnClickListener(play);
     }
 
     @Override
