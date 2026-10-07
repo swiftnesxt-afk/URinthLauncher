@@ -95,8 +95,8 @@
                 android:textSize="10sp"
                 android:icon="@drawable/ic_arrow_play"
                 android:iconTint="#001A18"
-                android:iconGravity="textStart"
-                android:iconPadding="2dp"
+                app:iconGravity="textStart"
+                app:iconPadding="2dp"
                 app:backgroundTint="#00F5D4"
                 app:cornerRadius="18dp" />
 
