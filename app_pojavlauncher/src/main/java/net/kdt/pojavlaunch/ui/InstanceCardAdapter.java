@@ -3,6 +3,7 @@ package net.kdt.pojavlaunch.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -29,6 +30,8 @@ public class InstanceCardAdapter extends RecyclerView.Adapter<InstanceCardAdapte
     }
 
     @Override public void onBindViewHolder(@NonNull Holder h, int position) {
+        int[] artwork = { R.raw.modrinth_card1_jpg_b64, R.raw.modrinth_card2_jpg_b64, R.raw.modrinth_card3_jpg_b64 };
+        h.art.setImageBitmap(AssetBitmapLoader.loadBase64Jpeg(h.itemView.getContext(), artwork[position]));
         h.name.setText(names[position]);
         h.version.setText(versions[position]);
         h.play.setOnClickListener(v -> listener.onPlay(position));
@@ -38,9 +41,10 @@ public class InstanceCardAdapter extends RecyclerView.Adapter<InstanceCardAdapte
     @Override public int getItemCount() { return names.length; }
 
     static class Holder extends RecyclerView.ViewHolder {
-        final TextView name, version; final MaterialButton play; final ImageButton menu;
+        final TextView name, version; final MaterialButton play; final ImageButton menu; final ImageView art;
         Holder(View v) {
             super(v);
+            art = v.findViewById(R.id.instance_art);
             name = v.findViewById(R.id.instance_name);
             version = v.findViewById(R.id.instance_version);
             play = v.findViewById(R.id.instance_play);
