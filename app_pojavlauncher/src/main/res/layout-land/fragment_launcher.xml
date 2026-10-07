@@ -73,15 +73,42 @@
                 android:paddingTop="5dp"
                 android:paddingEnd="7dp">
 
-                <TextView android:id="@+id/nav_home" style="@style/ModrinthNavItem" android:text="⌂   Home" android:background="@drawable/modrinth_nav_active"/>
-                <TextView android:id="@+id/nav_instances" style="@style/ModrinthNavItem" android:text="◇   Instances"/>
-                <TextView android:id="@+id/nav_modpacks" style="@style/ModrinthNavItem" android:text="♙   Modpacks"/>
-                <TextView android:id="@+id/nav_mods" style="@style/ModrinthNavItem" android:text="✦   Mods"/>
-                <TextView android:id="@+id/nav_shaders" style="@style/ModrinthNavItem" android:text="☼   Shaders"/>
-                <TextView android:id="@+id/nav_worlds" style="@style/ModrinthNavItem" android:text="◉   Worlds"/>
-                <TextView android:id="@+id/nav_resources" style="@style/ModrinthNavItem" android:text="▣   Resource Packs"/>
-                <TextView android:id="@+id/nav_servers" style="@style/ModrinthNavItem" android:text="≡   Servers"/>
-                <TextView android:id="@+id/nav_settings" style="@style/ModrinthNavItem" android:text="⚙   Settings"/>
+                <LinearLayout android:id="@+id/nav_home" style="@style/ModrinthNavRow" android:background="@drawable/modrinth_nav_active">
+                    <ImageView android:layout_width="23dp" android:layout_height="23dp" android:src="@drawable/ic_px_home" android:tint="#FFFFFF"/>
+                    <TextView style="@style/ModrinthNavLabel" android:text="Home"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/nav_instances" style="@style/ModrinthNavRow">
+                    <ImageView android:layout_width="23dp" android:layout_height="23dp" android:src="@drawable/ic_px_file" android:tint="#DDEDEE"/>
+                    <TextView style="@style/ModrinthNavLabel" android:text="Instances"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/nav_modpacks" style="@style/ModrinthNavRow">
+                    <ImageView android:layout_width="23dp" android:layout_height="23dp" android:src="@drawable/ic_px_folder" android:tint="#DDEDEE"/>
+                    <TextView style="@style/ModrinthNavLabel" android:text="Modpacks"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/nav_mods" style="@style/ModrinthNavRow">
+                    <ImageView android:layout_width="23dp" android:layout_height="23dp" android:src="@drawable/ic_px_experiment" android:tint="#DDEDEE"/>
+                    <TextView style="@style/ModrinthNavLabel" android:text="Mods"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/nav_shaders" style="@style/ModrinthNavRow">
+                    <ImageView android:layout_width="23dp" android:layout_height="23dp" android:src="@drawable/ic_px_image_renderer" android:tint="#DDEDEE"/>
+                    <TextView style="@style/ModrinthNavLabel" android:text="Shaders"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/nav_worlds" style="@style/ModrinthNavRow">
+                    <ImageView android:layout_width="23dp" android:layout_height="23dp" android:src="@drawable/ic_px_volcano" android:tint="#DDEDEE"/>
+                    <TextView style="@style/ModrinthNavLabel" android:text="Worlds"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/nav_resources" style="@style/ModrinthNavRow">
+                    <ImageView android:layout_width="23dp" android:layout_height="23dp" android:src="@drawable/ic_px_folder" android:tint="#DDEDEE"/>
+                    <TextView style="@style/ModrinthNavLabel" android:text="Resource Packs"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/nav_servers" style="@style/ModrinthNavRow">
+                    <ImageView android:layout_width="23dp" android:layout_height="23dp" android:src="@drawable/ic_px_console" android:tint="#DDEDEE"/>
+                    <TextView style="@style/ModrinthNavLabel" android:text="Servers"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/nav_settings" style="@style/ModrinthNavRow">
+                    <ImageView android:layout_width="23dp" android:layout_height="23dp" android:src="@drawable/ic_sharp_settings_24" android:tint="#DDEDEE"/>
+                    <TextView style="@style/ModrinthNavLabel" android:text="Settings"/>
+                </LinearLayout>
 
                 <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
 
@@ -125,7 +152,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="132dp"
+                    android:layout_height="116dp"
                     android:layout_marginTop="7dp"
                     android:orientation="horizontal">
                     <include android:id="@+id/instance_one" layout="@layout/modrinth_instance_card"/>
@@ -138,7 +165,7 @@
                     <TextView android:id="@+id/view_all_mods" android:layout_width="wrap_content" android:layout_height="25dp" android:gravity="center" android:paddingStart="9dp" android:paddingEnd="9dp" android:text="▦  View All" android:textColor="#00F5D4" android:textSize="10sp" android:background="@drawable/modrinth_outline"/>
                 </LinearLayout>
 
-                <LinearLayout android:layout_width="match_parent" android:layout_height="66dp" android:orientation="horizontal">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="62dp" android:orientation="horizontal">
                     <include android:id="@+id/mod_sodium" layout="@layout/modrinth_mod_card"/>
                     <include android:id="@+id/mod_lithium" layout="@layout/modrinth_mod_card"/>
                     <include android:id="@+id/mod_iris" layout="@layout/modrinth_mod_card"/>
