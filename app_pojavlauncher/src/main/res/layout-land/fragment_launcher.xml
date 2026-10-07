@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideline_header" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@id/guideline_sidebar" app:layout_constraintEnd_toStartOf="@id/guideline_right">
         <com.google.android.material.card.MaterialCardView android:id="@+id/hero_banner" android:layout_width="match_parent" android:layout_height="190dp" app:cardBackgroundColor="#0B3540" app:strokeColor="#087C7C" app:strokeWidth="1dp" app:cardCornerRadius="12dp">
             <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
-                <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/modrinth_landscape" android:contentDescription="@null"/>
+                <ImageView android:id="@+id/hero_art" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:contentDescription="@null"/>
                 <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#80061018"/>
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="“Play, Explore,
