@@ -43,7 +43,7 @@ public class InstanceCardAdapter extends RecyclerView.Adapter<InstanceCardAdapte
         // being pushed outside the RecyclerView. 6dp is the gap between cards.
         int available = parent.getWidth();
         if (available <= 0) {
-            available = Math.round(parent.getResources().getDisplayMetrics().widthPixels * 0.55f) - 12;
+            available = Math.round(parent.getResources().getDisplayMetrics().widthPixels * 0.64f) - 12;
         }
         int cardWidth = Math.max(1, (available - 12) / 3);
 
