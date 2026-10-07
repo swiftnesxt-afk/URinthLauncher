@@ -2,36 +2,41 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="0dp"
-    android:layout_height="180dp"
+    android:layout_height="160dp"
     android:layout_marginEnd="6dp"
     android:clipToOutline="true"
+    android:clickable="true"
+    android:focusable="true"
     app:cardBackgroundColor="#071B24"
     app:cardCornerRadius="12dp"
     app:strokeColor="#00F5D4"
-    app:strokeWidth="1dp">
+    app:strokeWidth="1dp"
+    app:rippleColor="#3300F5D4">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Top 60% = 96dp. -->
         <ImageView
             android:id="@+id/instance_art"
             android:layout_width="0dp"
-            android:layout_height="105dp"
+            android:layout_height="96dp"
             android:scaleType="centerCrop"
             android:contentDescription="@null"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- Bottom 40% = 64dp. -->
+        <LinearLayout
             android:id="@+id/instance_info"
             android:layout_width="0dp"
-            android:layout_height="75dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
+            android:layout_height="64dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="5dp"
             android:background="#E6072029"
             app:layout_constraintTop_toBottomOf="@id/instance_art"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,24 +45,18 @@
 
             <ImageView
                 android:id="@+id/instance_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 android:src="@drawable/ic_instance_grass"
-                android:contentDescription="@null"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                android:contentDescription="@null" />
 
             <LinearLayout
                 android:id="@+id/instance_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:orientation="vertical"
-                app:layout_constraintStart_toEndOf="@id/instance_icon"
-                app:layout_constraintEnd_toStartOf="@id/instance_play"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                android:layout_weight="1"
+                android:layout_marginStart="7dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/instance_name"
@@ -67,18 +66,17 @@
                     android:ellipsize="end"
                     android:text="URinthH"
                     android:textColor="#FFFFFF"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/instance_version"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:maxLines="1"
                     android:text="Vannila 26.3"
-                    android:textColor="#A8BEC5"
-                    android:textSize="10sp" />
+                    android:textColor="#A3C2C2"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -91,15 +89,16 @@
                 android:paddingEnd="6dp"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:text="▷ Play"
+                android:text="Play"
                 android:textAllCaps="false"
                 android:textColor="#001A18"
                 android:textSize="10sp"
+                android:icon="@drawable/ic_arrow_play"
+                android:iconTint="#001A18"
+                android:iconGravity="textStart"
+                android:iconPadding="2dp"
                 app:backgroundTint="#00F5D4"
-                app:cornerRadius="18dp"
-                app:layout_constraintEnd_toStartOf="@id/instance_menu"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:cornerRadius="18dp" />
 
             <ImageButton
                 android:id="@+id/instance_menu"
@@ -108,10 +107,7 @@
                 android:padding="6dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_native_more_vert"
-                android:contentDescription="More instance actions"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:contentDescription="More instance actions" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
