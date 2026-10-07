@@ -4,12 +4,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.button.MaterialButton;
 import git.artdeell.mojo.R;
 
@@ -23,7 +20,9 @@ public class InstanceCardAdapter extends RecyclerView.Adapter<InstanceCardAdapte
 
     @NonNull @Override public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_instance_card, parent, false);
-        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(parent.getMeasuredWidth() / 3, ViewGroup.LayoutParams.MATCH_PARENT);
+        int available = parent.getWidth();
+        if (available <= 0) available = parent.getResources().getDisplayMetrics().widthPixels * 55 / 100;
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(Math.max(1, available / 3), ViewGroup.LayoutParams.MATCH_PARENT);
         lp.setMargins(0, 0, 6, 0);
         v.setLayoutParams(lp);
         return new Holder(v);
