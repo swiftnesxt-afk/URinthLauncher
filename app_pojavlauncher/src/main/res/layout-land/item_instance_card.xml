@@ -94,7 +94,7 @@
                 android:textColor="#001A18"
                 android:textSize="10sp"
                 android:icon="@drawable/ic_arrow_play"
-                android:iconTint="#001A18"
+                app:iconTint="#001A18"
                 app:iconGravity="textStart"
                 app:iconPadding="2dp"
                 app:backgroundTint="#00F5D4"
