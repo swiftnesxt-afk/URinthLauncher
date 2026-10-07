@@ -1,94 +1,76 @@
 package net.kdt.pojavlaunch.fragments;
 
-import static net.kdt.pojavlaunch.Tools.openPath;
-import static net.kdt.pojavlaunch.Tools.shareLog;
-
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.kdt.mcgui.mcVersionSpinner;
-
-import net.kdt.pojavlaunch.CustomControlsActivity;
-import git.artdeell.mojo.R;
-
 import net.kdt.pojavlaunch.Tools;
-import net.kdt.pojavlaunch.contracts.OpenDocumentWithExtension;
 import net.kdt.pojavlaunch.extra.ExtraConstants;
 import net.kdt.pojavlaunch.extra.ExtraCore;
-import net.kdt.pojavlaunch.instances.Instance;
-import net.kdt.pojavlaunch.instances.Instances;
-import net.kdt.pojavlaunch.progresskeeper.ProgressKeeper;
-import net.kdt.pojavlaunch.utils.FileUtils;
-
-import java.io.File;
+import git.artdeell.mojo.R;
 
 public class MainMenuFragment extends Fragment {
     public static final String TAG = "MainMenuFragment";
 
-    private mcVersionSpinner mVersionSpinner;
-
-    private final ActivityResultLauncher<Object> mModInstallerLauncher =
-            registerForActivityResult(new OpenDocumentWithExtension("jar"), (data)->{
-                if(data != null) Tools.launchModInstaller(requireContext(), data);
-            });
-
-    public MainMenuFragment(){
+    public MainMenuFragment() {
         super(R.layout.fragment_launcher);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Button mNewsButton = view.findViewById(R.id.news_button);
-        Button mDiscordButton = view.findViewById(R.id.social_media_button);
-        Button mCustomControlButton = view.findViewById(R.id.custom_control_button);
-        Button mInstallJarButton = view.findViewById(R.id.install_jar_button);
-        Button mShareLogsButton = view.findViewById(R.id.share_logs_button);
-        Button mOpenDirectoryButton = view.findViewById(R.id.open_files_button);
+        View nav = view.findViewById(R.id.nav_button);
+        View settings = view.findViewById(R.id.nav_settings);
+        View account = view.findViewById(R.id.add_account_button);
+        View discord = view.findViewById(R.id.discord_button);
 
-        ImageButton mEditProfileButton = view.findViewById(R.id.edit_profile_button);
-        Button mPlayButton = view.findViewById(R.id.play_button);
-        mVersionSpinner = view.findViewById(R.id.mc_version_spinner);
+        View play1 = view.findViewById(R.id.instance_one).findViewById(R.id.instance_play);
+        View play2 = view.findViewById(R.id.instance_two).findViewById(R.id.instance_play);
+        View play3 = view.findViewById(R.id.instance_three).findViewById(R.id.instance_play);
 
-        mNewsButton.setOnClickListener(v -> Tools.openURL(requireActivity(), Tools.URL_HOME));
-        mDiscordButton.setOnClickListener(v -> Tools.openURL(requireActivity(), getString(R.string.social_media_invite)));
-        mCustomControlButton.setOnClickListener(v -> startActivity(new Intent(requireContext(), CustomControlsActivity.class)));
-        mInstallJarButton.setOnClickListener(v -> runInstallerWithConfirmation());
-        mEditProfileButton.setOnClickListener(v -> mVersionSpinner.openProfileEditor(requireActivity()));
+        View.OnClickListener openSettings = v ->
+                Tools.swapFragment(requireActivity(),
+                        net.kdt.pojavlaunch.prefs.screens.LauncherPreferenceFragment.class,
+                        net.kdt.pojavlaunch.LauncherActivity.SETTING_FRAGMENT_TAG, null);
 
-        mPlayButton.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true));
+        if (nav != null) nav.setOnClickListener(openSettings);
+        if (settings != null) settings.setOnClickListener(openSettings);
 
-        mShareLogsButton.setOnClickListener((v) -> shareLog(requireContext()));
+        View.OnClickListener addAccount = v ->
+                ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true);
+        if (account != null) account.setOnClickListener(addAccount);
 
-        mOpenDirectoryButton.setOnClickListener((v)-> openGameDirectory(v.getContext()));
+        View.OnClickListener play = v ->
+                ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true);
+        if (play1 != null) play1.setOnClickListener(play);
+        if (play2 != null) play2.setOnClickListener(play);
+        if (play3 != null) play3.setOnClickListener(play);
 
-
-        mNewsButton.setOnLongClickListener((v)->{
-            Tools.swapFragment(requireActivity(), GamepadMapperFragment.class, GamepadMapperFragment.TAG, null);
-            return true;
-        });
-    }
-
-    private void openGameDirectory(Context context) {
-        Instance instance = Instances.loadSelectedInstance();
-        if(instance == null) {
-            Toast.makeText(context, R.string.no_instance, Toast.LENGTH_LONG).show();
-            return;
+        if (discord != null) {
+            discord.setOnClickListener(v ->
+                    Tools.openURL(requireActivity(), getString(R.string.social_media_invite)));
         }
-        File gameDirectory = instance.getGameDirectory();
-        if(FileUtils.ensureDirectorySilently(gameDirectory)) {
-            openPath(context, gameDirectory, false);
-        }else {
-            Toast.makeText(context, R.string.gamedir_open_failed, Toast.LENGTH_LONG).show();
+
+        View ultra = view.findViewById(R.id.ultra_button);
+        if (ultra instanceof TextView) {
+            ultra.setOnClickListener(v -> {
+                TextView t = (TextView) v;
+                boolean on = t.getText().toString().endsWith("ON");
+                t.setText(on
+                        ? "🚀  UrinthUltra Mode\n     Enable ultra performance mode             OFF   ON"
+                        : "🚀  UrinthUltra Mode\n     Enable ultra performance mode             OFF   ON");
+                t.setSelected(!on);
+            });
+        }
+
+        View updates = view.findViewById(R.id.check_updates_button);
+        if (updates != null) {
+            updates.setOnClickListener(v ->
+                    android.widget.Toast.makeText(requireContext(),
+                            "Checking for updates…", android.widget.Toast.LENGTH_SHORT).show());
         }
     }
 
@@ -96,11 +78,5 @@ public class MainMenuFragment extends Fragment {
     public void onResume() {
         super.onResume();
         ExtraCore.setValue(ExtraConstants.REFRESH_ACCOUNT_SPINNER, true);
-    }
-
-    private void runInstallerWithConfirmation() {
-        if (ProgressKeeper.getTaskCount() == 0) {
-            mModInstallerLauncher.launch(null);
-        } else Toast.makeText(requireContext(), R.string.tasks_ongoing, Toast.LENGTH_LONG).show();
     }
 }
